@@ -768,6 +768,9 @@ class SPAStaticFiles(StaticFiles):
 # The API endpoints are registered first, so they are resolved before StaticFiles matches the files
 current_dir = os.path.dirname(os.path.abspath(__file__))
 frontend_dist_dir = os.path.abspath(os.path.join(current_dir, "..", "frontend", "dist"))
-app.mount("/", SPAStaticFiles(directory=frontend_dist_dir, html=True), name="static")
+if os.path.exists(frontend_dist_dir):
+    app.mount("/", SPAStaticFiles(directory=frontend_dist_dir, html=True), name="static")
+else:
+    print(f"[SatyaPramaan] Warning: Frontend dist directory not found at {frontend_dist_dir}. Serving API only.")
 
 
