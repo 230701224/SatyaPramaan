@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext, useRef, useCallback } from 'react';
-import axios from 'axios';
+import axios from '../lib/axios';
 import { useDropzone } from 'react-dropzone';
 import { AuthContext } from '../context/AuthContext';
 import {

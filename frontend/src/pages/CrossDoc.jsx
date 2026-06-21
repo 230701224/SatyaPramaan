@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import axios from 'axios';
+import axios from '../lib/axios';
 import {
   FileText, AlertTriangle, CheckCircle2, XCircle,
   RefreshCw, Network, ShieldCheck, Building2, CreditCard, ExternalLink, Download

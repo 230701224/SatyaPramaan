@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import axios from '../lib/axios';
 import { Search, Loader2, Database, ShieldAlert, CheckSquare } from 'lucide-react';
 
 const AuditVault = () => {
