@@ -1,0 +1,201 @@
+@import "tailwindcss";
+
+:root {
+  --bg-app: #030712;
+  --bg-sidebar: #0b0f19;
+  --bg-panel: rgba(11, 15, 25, 0.65);
+  --text-main: #f8fafc;
+  --text-muted: #94a3b8;
+  --border-color: rgba(51, 65, 85, 0.5);
+  --bg-input: #0c111e;
+  --bg-card-hover: rgba(30, 41, 59, 0.2);
+  --header-bg: rgba(3, 7, 18, 0.75);
+  --bg-scanner: #121824;
+}
+
+.light-theme {
+  --bg-app: #f1f5f9;
+  --bg-sidebar: #ffffff;
+  --bg-panel: rgba(255, 255, 255, 0.75);
+  --text-main: #0f172a;
+  --text-muted: #475569;
+  --border-color: rgba(203, 213, 225, 0.8);
+  --bg-input: #ffffff;
+  --bg-card-hover: rgba(241, 245, 249, 0.8);
+  --header-bg: rgba(241, 245, 249, 0.75);
+  --bg-scanner: #ffffff;
+}
+
+@layer base {
+  body {
+    background-color: var(--bg-app);
+    color: var(--text-main);
+    @apply font-sans antialiased transition-colors duration-300;
+  }
+}
+
+.theme-bg-app {
+  background-color: var(--bg-app);
+  @apply transition-colors duration-300;
+}
+.theme-bg-sidebar {
+  background-color: var(--bg-sidebar);
+  @apply transition-colors duration-300;
+}
+.theme-text-main {
+  color: var(--text-main);
+}
+.theme-text-muted {
+  color: var(--text-muted);
+}
+.theme-border {
+  border-color: var(--border-color);
+}
+.theme-bg-input {
+  background-color: var(--bg-input);
+  @apply transition-colors duration-300;
+}
+.theme-header {
+  background-color: var(--header-bg);
+  @apply transition-colors duration-300;
+}
+.theme-bg-scanner {
+  background-color: var(--bg-scanner);
+  @apply transition-colors duration-300;
+}
+
+/* Glassmorphic Panel utility styles */
+.glass-panel {
+  background-color: var(--bg-panel);
+  border: 1px solid var(--border-color);
+  @apply rounded-2xl shadow-2xl backdrop-blur-md transition-all duration-300;
+}
+
+.glass-panel:hover {
+  background-color: var(--bg-card-hover);
+  @apply border-indigo-500/40;
+}
+
+/* Scanning line animation */
+@keyframes laser-scan {
+  0% { top: 0%; }
+  50% { top: 100%; }
+  100% { top: 0%; }
+}
+
+@keyframes laser-glow {
+  0% { top: 0%; transform: scaleY(1); }
+  50% { top: 100%; transform: scaleY(-1); }
+  100% { top: 0%; transform: scaleY(1); }
+}
+
+.laser-line-anim {
+  animation: laser-scan 3s linear infinite;
+}
+
+.laser-glow-anim {
+  animation: laser-glow 3s linear infinite;
+}
+
+/* Typography highlighting outline classes */
+.word-highlight {
+  @apply bg-red-500/10 border-b-2 border-dashed border-red-500 text-red-500 font-semibold cursor-pointer rounded px-0.5 transition-all duration-200;
+}
+
+.word-highlight:hover {
+  @apply bg-red-500/25 shadow-sm shadow-red-500/40;
+}
+
+/* Scrollbar styles override */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  @apply bg-transparent;
+}
+::-webkit-scrollbar-thumb {
+  @apply bg-slate-800 rounded-full hover:bg-slate-700;
+}
+
+/* ── Fade in animation ─────────────────────────────── */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.animate-fadeIn {
+  animation: fadeIn 0.35s ease-out both;
+}
+
+/* ── ELA Slider Track ─────────────────────────────── */
+input[type="range"].ela-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 6px;
+  border-radius: 9999px;
+  background: linear-gradient(to right, #10b981, #6366f1, #ef4444);
+  outline: none;
+  cursor: pointer;
+}
+input[type="range"].ela-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: white;
+  border: 3px solid #6366f1;
+  box-shadow: 0 0 8px rgba(99, 102, 241, 0.5);
+  cursor: grab;
+}
+input[type="range"].ela-slider::-webkit-slider-thumb:active {
+  cursor: grabbing;
+  transform: scale(1.2);
+}
+
+/* ── Diff Table Row Colors ─────────────────────────── */
+.diff-match-row {
+  background: rgba(16, 185, 129, 0.03);
+}
+.diff-mismatch-row {
+  background: rgba(239, 68, 68, 0.06);
+}
+
+/* ── Fraud Ring Graph Node ─────────────────────────── */
+.fraud-node-ring {
+  filter: drop-shadow(0 0 4px rgba(239, 68, 68, 0.7));
+}
+
+/* ── API Status Pill ───────────────────────────────── */
+.api-status-pill {
+  @apply flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[9px] font-bold border;
+}
+.api-status-pill.online {
+  @apply bg-emerald-500/10 text-emerald-400 border-emerald-500/20;
+}
+.api-status-pill.offline {
+  @apply bg-slate-800 text-slate-500 border-slate-700;
+}
+
+/* ── Stat Card hover ───────────────────────────────── */
+.stat-card {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.stat-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(99, 102, 241, 0.08);
+}
+
+/* ── Line clamp utility ────────────────────────────── */
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}

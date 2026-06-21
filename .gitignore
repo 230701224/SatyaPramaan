@@ -1,0 +1,31 @@
+## Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+*.egg
+dist/
+build/
+*.db
+
+## Node
+node_modules/
+frontend/dist/
+
+## Uploads & temp files
+uploads/
+*.liveness_temp.png
+
+## IDE
+.vscode/
+.idea/
+
+## OS
+.DS_Store
+Thumbs.db
+
+## Environment
+.env
+*.env.local
+
+## Scratch
+scratch/

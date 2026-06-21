@@ -1,0 +1,28 @@
+fastapi==0.115.6
+uvicorn==0.32.1
+sqlalchemy==2.0.36
+pypdf==5.1.0
+pdfplumber==0.11.4
+pillow==11.0.0
+opencv-python-headless==4.10.0.84
+# numpy is already installed (2.2.0) — do not constrain, let pip use existing
+python-multipart==0.0.19
+pyjwt==2.10.1
+passlib==1.7.4
+bcrypt==4.2.1
+# ── Layer 1: Enhanced OCR and metadata ──────────────
+pymupdf==1.24.14
+boto3>=1.34.0
+python-dotenv==1.0.1
+# ── Layer 2: Image forensics ─────────────────────────
+matplotlib>=3.8.0
+scipy>=1.12.0
+# ── Layer 3: Cross-document ML / Graph ───────────────
+networkx>=3.2.0
+httpx>=0.27.0
+# ── Layer 2: Seal detection ──────────────────────────
+# ultralytics requires numpy<2; install separately if needed:
+# pip install ultralytics --no-deps
+# pip install lapx>=0.5.2 py-cpuinfo supervision
+# ── Layer 4: LLM Insight ─────────────────────────────
+anthropic>=0.40.0
